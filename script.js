@@ -27,16 +27,6 @@ $(document).ready(function () {
 	$('.switch').click(function () { switchContent($(this).attr('id').replace('switch-', ''));});
 	$('#arrow').click(function () { switchContent('beach');});
 	
-	$( document ).tooltip({
-		items: "[title]",
-		content: function() {
-			var element = $( this );
-			if ( element.is( "[title]" ) ) {
-				return element.attr( "title" );
-			}
-		}
-	});
-	
 	$('#trips').click(function () {
 		$('#maps').fadeIn(1000);
 	});
@@ -55,9 +45,18 @@ $(document).ready(function () {
 		$('#loading').hide();
 		$("#beach").fadeIn(2000);
 		$("#overlay").fadeIn(2000);
-		
 		setTimeout(function() { startAnimation();}, 2000);
-	})
+		$('body').append('<img id="enac" class="bg-img" src="https://s3-eu-west-1.amazonaws.com/jctouzalin/images/enac.jpg" alt="ENAC" />')
+		.append('<img id="aau" class="bg-img" src="https://s3-eu-west-1.amazonaws.com/jctouzalin/images/aau.png" alt="AAU" />')
+		.append('<img id="njit" class="bg-img" src="https://s3-eu-west-1.amazonaws.com/jctouzalin/images/njit.png" alt="NJIT" />')
+		.append('<img id="lma" class="bg-img" src="https://s3-eu-west-1.amazonaws.com/jctouzalin/images/lma.jpg" alt="LMA" />')
+		.append('<img id="gifas" class="bg-img" src="https://s3-eu-west-1.amazonaws.com/jctouzalin/images/gifas.jpg" alt="GIFAS" />')
+		.append('<img id="tomoro" class="bg-img" src="https://s3-eu-west-1.amazonaws.com/jctouzalin/images/2moro.jpg" alt="2MoRO" />')
+		.append('<img id="snecma" class="bg-img" src="https://s3-eu-west-1.amazonaws.com/jctouzalin/images/snecma.jpg" alt="SNECMA" />');
+		$('.bg-img').load(function () {
+			reLayout();
+		});
+	});
 })
 
 function startAnimation()
